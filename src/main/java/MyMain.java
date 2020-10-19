@@ -1,5 +1,5 @@
 import java.util.Arrays;
-
+// Code by David Yang, with the help from Neiman Chen on method "IsGeometric" "double" logic.
 public class MyMain {
 
     // Reverses an array
@@ -29,23 +29,22 @@ public class MyMain {
 
     // Checks to see if an array contains a geometric series
     public static boolean isGeometric(int[] arr) {
-        if (arr.length == 1) {
-            return true;
-        }
-        int ratio = arr[1] / (arr[0]);
-        for (int i = 1; i < arr.length; i++) {
-            if ((arr[i] / (arr[i - 1])) != ratio) {
+        double ratio = ((double) (double)arr[1] / (double)arr[0]);
+        // index 6 out of range error wont happen.
+        for (int i = 0; i < arr.length - 1; i++) {
+            if ((double) (arr[i + 1]) / (double)arr[i] != ratio) {
                 return false;
             }
-        }
-        return true;
+        }           
+        return true;        
     }
 
 
     public static void main(String[] args) {
-        int arr[] = {1,2,3,4,6,5,7};
+        int arr[] = {1,2,4,8,15,16};
+        int arr1[] = {1,2,4,8,16,32};
         System.out.println(Arrays.toString(reverse(arr)));
         System.out.println(secondLargest(arr));
-        System.out.println(isGeometric(arr));
+        System.out.println(isGeometric(arr1));
     }
 }
